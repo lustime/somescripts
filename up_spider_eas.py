@@ -74,12 +74,11 @@ class SpiderAirport:
         year = datetime.datetime.now().year
         month = datetime.datetime.now().month
         day = datetime.datetime.now().day
-        begin_date = str(year) + '-' + str(month) + '01'
-        end_date = str(year) + '-' + str(month) + str(day)
+        begin_date = str(year) + '-' + str(month) + '-01'
+        end_date = str(year) + '-' + str(month) + '-' + str(day)
         param += '&beginDate=' + begin_date + '&endDate=' + end_date
         rel_url = self.check_items.get('url') + 'shr/dynamic.do'
         response = session.get(url=rel_url, params=param, verify=False)
-        # print(response.text)
         data = json.loads(response.text)['rows']
         self.quit(c)
         person_number = self.check_items.get('personNumber')
