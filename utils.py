@@ -22,17 +22,17 @@ def get_data() -> dict:
     if DATA:
         return DATA
 
-    if check_config := os.getenv("CHECK_CONFIG"):
-        if not os.path.exists(check_config):
-            print(f"错误：环境变量 CHECK_CONFIG 指定的配置文件 {check_config} 不存在！")
-            exit(1)
-    else:
-        check_config = utils_env.get_file_path(
-            "check.json5"
-        ) or utils_env.get_file_path("check.json")
-        if not check_config:
-            print("错误：未检查到签到配置文件，请在指定位置创建文件或设置 CHECK_CONFIG 指定你的文件。")
-            exit(1)
+    # check_config = os.getenv("CHECK_CONFIG")
+    # if not os.path.exists(check_config):
+    #     print(f"错误：环境变量 CHECK_CONFIG 指定的配置文件 {check_config} 不存在！")
+    #     exit(1)
+    # else:
+    check_config = utils_env.get_file_path(
+        "check.json5"
+    ) or utils_env.get_file_path("check.json")
+    if not check_config:
+        print("错误：未检查到签到配置文件，请在指定位置创建文件或设置 CHECK_CONFIG 指定你的文件。")
+        exit(1)
 
     try:
         DATA = json.load(open(check_config, "r", encoding="utf-8"))

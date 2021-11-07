@@ -80,7 +80,8 @@ notify_function = []
 
 # 首先读取 面板变量 或者 github action 运行变量
 for k in push_config:
-    if v := os.getenv(k):
+    v = os.getenv(k)
+    if v:
         push_config[k] = v
 
 # 读取配置文件中的变量 (会覆盖环境变量)
@@ -529,7 +530,7 @@ if push_config.get("TG_BOT_TOKEN") and push_config.get("TG_USER_ID"):
     notify_function.append(telegram_bot)
 
 
-def excepthook(args, /):
+def excepthook(args):
     if issubclass(args.exc_type, requests.exceptions.RequestException):
         print(
             f"网络异常，请检查你的网络连接、推送服务器和代理配置，该错误和账号配置无关。信息：{str(args.exc_type)}, {args.thread.name}"
@@ -543,8 +544,8 @@ def excepthook(args, /):
         default_hook(args)
 
 
-default_hook = threading.excepthook
-threading.excepthook = excepthook
+# default_hook = threading.excepthook
+# threading.excepthook = excepthook
 
 
 def send(title: str, content: str) -> None:

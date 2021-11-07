@@ -21,6 +21,7 @@ def get_env_str() -> str:
     ql_file = "/ql/config/env.sh"
 
     print("尝试检查运行环境...")
+    e = platform.system()
     if os.getenv("GITHUB_ACTIONS"):
         print("成功，当前环境为: github action 面板。")
         env = "github"
@@ -32,7 +33,7 @@ def get_env_str() -> str:
         env = "ql"
 
     # 面板判断优先于系统判断
-    elif (e := platform.system()) == "Windows" or "Linux" or "Darwin":
+    elif e == "Windows" or "Linux" or "Darwin":
         print(f"成功，当前环境为 {e}。")
         env = e
     else:
