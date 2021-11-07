@@ -17,6 +17,7 @@ from selenium.webdriver.common.by import By
 
 from notify_mtr import send
 from utils import get_data
+import platform
 
 warnings.filterwarnings("ignore", category=Warning)
 
@@ -36,9 +37,12 @@ class SpiderAirport:
         options.add_argument('--no-sandbox')
         options.add_argument('--window-size=1920x1080')
         # options.binary_location = binary_location
-        c = webdriver.Chrome(executable_path='C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe',
-                             chrome_options=options)
-        # c = webdriver.Chrome(chrome_options=options)
+        e = platform.system()
+        if e == 'Windows':
+            c = webdriver.Chrome(executable_path='C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe',
+                                 chrome_options=options)
+        else:
+            c = webdriver.Chrome(chrome_options=options)
         c.implicitly_wait(10)
         url = self.check_items.get('url') + 'portal/main.jsp'
         c.get(url)
