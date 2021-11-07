@@ -113,8 +113,8 @@ class SpiderAirport:
 
 def start():
     data = get_data();
-    _check_itmes = data.get('EAS', [])
-    res = SpiderAirport(check_itmes=_check_itmes).getUserInfo()
+    _check_items = data.get('EAS', [])
+    res = SpiderAirport(check_items=_check_items).getUserInfo()
     print(res)
 
 
