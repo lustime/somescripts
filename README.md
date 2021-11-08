@@ -2,7 +2,7 @@
 
 > some own scripts
 
-## 注意
+## 快速开始
 
 ql repo https://ghproxy.com/https://github.com/lustime/somescripts.git "api_|ck_up_" "^utils|^notify" "my_" master
 
