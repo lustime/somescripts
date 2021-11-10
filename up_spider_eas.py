@@ -96,7 +96,10 @@ class SpiderAirport:
         msg_text += "缺卡次数：" + str(yl['S38']) + ",矿工次数：" + str(yl['S22']) + ",迟到次数：" + str(yl['S18']) + ",早退次数： " + str(
             yl['S20']) + "\n"
         msg_text += "补卡次数：" + str(yl['S24']) + ",请假次数：" + str(yl['S26'])
-        send("璐宝宝异常考勤提醒", msg_text)
+        if yl['S38'] or yl['S22'] or yl['S18'] or yl['S20'] > 0:
+            send("璐宝宝异常考勤提醒", msg_text)
+        else:
+            print('无考勤异常，跳过通知。')
         return msg_text
 
     @staticmethod
