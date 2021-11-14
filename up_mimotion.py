@@ -120,6 +120,7 @@ def start():
     _check_items = data.get("MIMOTION", [])
     res = MiMotion(check_items=_check_items).main()
     # send("小米运动", res)
+    print(res)
 
 
 if __name__ == "__main__":
