@@ -17,6 +17,7 @@ from selenium.webdriver.common.by import By
 
 from notify_mtr import send
 from utils import get_data
+from my_email_util import sendMail
 import platform
 
 warnings.filterwarnings("ignore", category=Warning)
