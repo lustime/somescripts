@@ -72,9 +72,9 @@ class KQYC:
             has_abnormal = has_abnormal or int(abnormalAttendancTimes) > 0
         if has_abnormal:
             send("异常考勤提醒", msg_all)
+            sendMail(msg_all, '考勤通知', '', '', '')
         else:
             print('无异常考勤，跳过通知')
-        sendMail(msg_all, '考勤通知', '', '', '')
         return msg_all
 
 
