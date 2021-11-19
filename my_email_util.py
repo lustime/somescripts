@@ -15,8 +15,9 @@ def sendMail(message, subject, to_addres, from_show, to_show, cc_show=''):
     '''
 
     data = get_data()
-    user = data.get('mailUser')
-    password = data.get('mailPassword')
+    mail = data.get('MAIL')
+    user = mail.get('user')
+    password = mail.get('password')
     if len(to_addres) == 0:
         to_addres = data.get('mailToAddres')
     if len(from_show) == 0:
