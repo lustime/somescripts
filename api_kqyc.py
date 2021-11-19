@@ -11,6 +11,7 @@ import calendar
 from notify_mtr import send
 from my_util import get_user_id
 from utils import get_data
+from my_email_util import sendMail
 
 
 class KQYC:
@@ -73,6 +74,7 @@ class KQYC:
             send("异常考勤提醒", msg_all)
         else:
             print('无异常考勤，跳过通知')
+        sendMail(msg_all, '考勤通知', '', '', '')
         return msg_all
 
 
