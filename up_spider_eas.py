@@ -99,7 +99,8 @@ class SpiderAirport:
         msg_text += "补卡次数：" + str(yl['S24']) + ",请假次数：" + str(yl['S26'])
         if yl['S38'] or yl['S22'] or yl['S18'] or yl['S20'] > 0:
             send("璐宝宝异常考勤提醒", msg_text)
-            sendMail(msg_text, '璐宝宝考勤异常提醒', '', '', '')
+            mail_to_address = self.check_items.get('mail_to_address')
+            sendMail(msg_text, '璐宝宝考勤异常提醒', mail_to_address)
         else:
             print('无考勤异常，跳过通知。')
         return msg_text
