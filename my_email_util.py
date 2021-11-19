@@ -1,10 +1,24 @@
 from smtplib import SMTP_SSL
 from email.mime.text import MIMEText
 from utils import get_data
+import requests
+
+
+def one() -> str:
+    """
+    获取一条一言。
+    :return:
+    """
+    try:
+        url = "https://v1.hitokoto.cn/"
+        res = requests.get(url).json()
+        return res["hitokoto"] + "    ----" + res["from"]
+    except requests.exceptions.ConnectionError:
+        return ""
 
 
 def sendMail(message, subject, to_addres=None, from_show='lustime', to_show='lbb', cc_show=None):
-    '''
+    """
     :param message: str 邮件内容
     :param subject: str 主题
     :param from_show: str 发件人显示
@@ -12,7 +26,7 @@ def sendMail(message, subject, to_addres=None, from_show='lustime', to_show='lbb
     :param cc_show: str 抄送人显示
     :param to_addres: str 实际收件人
     :return:
-    '''
+    """
 
     data = get_data()
     mail = data.get('MAIL')
@@ -20,6 +34,9 @@ def sendMail(message, subject, to_addres=None, from_show='lustime', to_show='lbb
     password = mail.get('password')
     if to_addres is None:
         to_addres = mail.get('toAddres')
+    hitokoto = data.get('HITOKOTO')
+    text = one() if hitokoto else ''
+    message += '\n\n' + text
     msg = MIMEText(message, 'plain', _charset="utf-8")
     msg["Subject"] = subject
     msg["from"] = from_show
