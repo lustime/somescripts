@@ -29,7 +29,7 @@ def sendMail(message, subject, to_addres, from_show, to_show, cc_show=''):
     msg["from"] = from_show
     msg["to"] = to_show
     msg["Cc"] = cc_show
-    with SMTP_SSL(host="smtp.exmail.qq.com", port=465) as smtp:
+    with SMTP_SSL(host="smtp.qq.com", port=465) as smtp:
         smtp.login(user=user, password=password)
         smtp.sendmail(from_addr=user, to_addrs=to_addres.split(','), msg=msg.as_string())
         smtp.quit()
