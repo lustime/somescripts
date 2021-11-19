@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 from utils import get_data
 
 
-def sendMail(message, subject, to_addres, from_show, to_show, cc_show=''):
+def sendMail(message, subject, to_addres=None, from_show='lustime', to_show='lbb', cc_show=None):
     '''
     :param message: str 邮件内容
     :param subject: str 主题
@@ -18,12 +18,8 @@ def sendMail(message, subject, to_addres, from_show, to_show, cc_show=''):
     mail = data.get('MAIL')
     user = mail.get('user')
     password = mail.get('password')
-    if len(to_addres) == 0:
+    if to_addres is None:
         to_addres = mail.get('toAddres')
-    if len(from_show) == 0:
-        from_show = 'lustime'
-    if len(to_show) == 0:
-        to_show = 'lbb'
     msg = MIMEText(message, 'plain', _charset="utf-8")
     msg["Subject"] = subject
     msg["from"] = from_show
@@ -39,10 +35,4 @@ def sendMail(message, subject, to_addres, from_show, to_show, cc_show=''):
 if __name__ == '__main__':
     message = 'Python 测试邮件...'
     Subject = '主题测试'
-    # 显示发送人
-    sender_show = 'ailulu'
-    # 显示收件人
-    recipient_show = 'lbb'
-    # 实际发给的收件人
-    to_addrs = 'lumin_sn@126.com'
-    sendMail(message, Subject, to_addrs, sender_show, recipient_show)
+    sendMail(message, Subject, to_show='ailulu')
