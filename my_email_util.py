@@ -19,7 +19,7 @@ def sendMail(message, subject, to_addres, from_show, to_show, cc_show=''):
     user = mail.get('user')
     password = mail.get('password')
     if len(to_addres) == 0:
-        to_addres = data.get('mailToAddres')
+        to_addres = mail.get('toAddres')
     if len(from_show) == 0:
         from_show = 'lustime'
     if len(to_show) == 0:
