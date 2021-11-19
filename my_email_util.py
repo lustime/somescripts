@@ -33,6 +33,7 @@ def sendMail(message, subject, to_addres, from_show, to_show, cc_show=''):
         smtp.login(user=user, password=password)
         smtp.sendmail(from_addr=user, to_addrs=to_addres.split(','), msg=msg.as_string())
         smtp.quit()
+    print('邮件通知完成')
 
 
 if __name__ == '__main__':
