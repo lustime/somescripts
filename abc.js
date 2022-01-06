@@ -1,6 +1,9 @@
 /*
 集“年味卡”，享年货盛宴
 
+cron: 0 9 * * *
+new Env('年味卡');
+
 https://lzdz1-isv.isvjcloud.com/dingzhi/customized/common/activity?activityId=cd2022n4ci22tlj1s2w3245u1mk&shareUuid=31e5b0ffe4554307a9c5edf87a29ee7d
 */
 const $ = new Env("集“年味卡”，享年货盛宴");
