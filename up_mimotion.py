@@ -86,7 +86,7 @@ class MiMotion:
                 print("初始化步数失败: 已将最大值设置为 19999", e)
                 max_step = 19999
             if str(check_item.get("min_step")).strip() == '' or str(check_item.get("max_step")).strip() == '':
-                step = str(22000 + random.randint(1, 10) * 100 + int(time.strftime('%H')) * 100)
+                step = str(12000 + random.randint(1, 10) * 100 + int(time.strftime('%H')) * 100)
             else:
                 step = str(random.randint(min_step, max_step))
             login_token, userid = self.login(phone, password)
