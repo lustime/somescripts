@@ -18,7 +18,7 @@ def get_env_str() -> str:
         return ENV
 
     v2p_file = "/usr/local/app/script/Lists/task.list"
-    ql_file = "/ql/config/env.sh"
+    ql_file = "/ql/data/config/env.sh"
 
     print("尝试检查运行环境...")
     e = platform.system()
@@ -83,7 +83,7 @@ def get_file_path(file_name: str) -> str:
         file_name,
         file_name,
         f"/usr/local/app/script/Lists/{file_name}",
-        f"/ql/config/{file_name}",
+        f"/ql/data/config/{file_name}",
     ]
 
     if env_i < 0:
