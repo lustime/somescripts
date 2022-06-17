@@ -14,6 +14,7 @@ import requests
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 
 from notify_mtr import send
 from utils import get_data
@@ -40,7 +41,8 @@ class SpiderAirport:
         # options.binary_location = binary_location
         e = platform.system()
         if e == 'Windows':
-            c = webdriver.Chrome(executable_path='C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe',
+            # pip install webdriver-manager
+            c = webdriver.Chrome(ChromeDriverManager(path="./").install(),
                                  chrome_options=options)
         else:
             c = webdriver.Chrome(chrome_options=options)
