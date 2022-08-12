@@ -85,7 +85,8 @@ class SpiderAirport:
         day = datetime.datetime.now().day
         begin_date = str(year) + '-' + str(month) + '-01'
         end_date = str(year) + '-' + str(month) + '-' + str(day)
-        param += '&beginDate=' + begin_date + '&endDate=' + end_date
+        param += "filterItems1=result.FAttenceDate+>=+'" + begin_date + "'+"
+        # param += '&beginDate=' + begin_date + '&endDate=' + end_date
         rel_url = self.check_items.get('url') + 'shr/dynamic.do'
         response = session.get(url=rel_url, params=param, verify=False)
         data = json.loads(response.text)['rows']
@@ -95,6 +96,7 @@ class SpiderAirport:
         for d in data:
             if d['personNumber'] == person_number:
                 yl = d
+                break
         msg_text = "姓名：" + str(yl['personName']) + "\n"
         msg_text += "缺卡次数：" + str(yl['S38']) + ",矿工次数：" + str(yl['S22']) + ",迟到次数：" + str(yl['S18']) + ",早退次数： " + str(
             yl['S20']) + "\n"
@@ -102,7 +104,8 @@ class SpiderAirport:
         if yl['S38'] or yl['S22'] or yl['S18'] or yl['S20'] > 0:
             send("璐宝宝异常考勤提醒", msg_text)
             mail_to_address = self.check_items.get('mail_to_address')
-            sendMail(msg_text, '璐宝宝考勤异常提醒', mail_to_address)
+            if self.check_items.get('send_mail'):
+                sendMail(msg_text, '璐宝宝考勤异常提醒', mail_to_address)
         else:
             print('无考勤异常，跳过通知。')
         return msg_text
