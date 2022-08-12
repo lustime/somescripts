@@ -25,7 +25,11 @@ def get_user_id(emp_no: str) -> str:
 
     response = requests.request("POST", url, headers=headers, data=json.dumps(payload))
 
-    return json.loads(response.text)['bo']['rows'][0]['id']
+    text = json.loads(response.text)
+    bo = text.get('bo')
+    rows = bo['rows']
+    result = rows[0]
+    return result['id']
 
 
 def main():
