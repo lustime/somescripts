@@ -85,8 +85,8 @@ class SpiderAirport:
         day = datetime.datetime.now().day
         begin_date = str(year) + '-' + str(month) + '-01'
         end_date = str(year) + '-' + str(month) + '-' + str(day)
-        param += "filterItems1=result.FAttenceDate+>=+'" + begin_date + "'+"
-        # param += '&beginDate=' + begin_date + '&endDate=' + end_date
+        # param += "filterItems1=result.FAttenceDate+>=+'" + begin_date + "'+"
+        param += '&beginDate=' + begin_date + '&endDate=' + end_date
         rel_url = self.check_items.get('url') + 'shr/dynamic.do'
         response = session.get(url=rel_url, params=param, verify=False)
         data = json.loads(response.text)['rows']
