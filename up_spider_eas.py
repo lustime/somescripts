@@ -62,7 +62,9 @@ class SpiderAirport:
         return session, c
 
     def getUserInfo(self):
+        print("begin to login for cookie...")
         session, c = self.login()
+        print("login success, get cookie success.")
         time.sleep(2)
         try:
             c.find_element(By.ID, 'btnKick').click()
@@ -88,7 +90,9 @@ class SpiderAirport:
         # param += "filterItems1=result.FAttenceDate+>=+'" + begin_date + "'+"
         param += '&beginDate=' + begin_date + '&endDate=' + end_date
         rel_url = self.check_items.get('url') + 'shr/dynamic.do'
+        print("begin to query kq info..")
         response = session.get(url=rel_url, params=param, verify=False)
+        print("get kq info success.")
         data = json.loads(response.text)['rows']
         self.quit(c)
         person_number = self.check_items.get('personNumber')
