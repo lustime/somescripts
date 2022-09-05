@@ -41,7 +41,7 @@ class SpiderAirport:
         # options.binary_location = binary_location
         e = platform.system()
         #c = webdriver.Chrome(ChromeDriverManager(path="./").install(),
-                                 chrome_options=options)
+        #                         chrome_options=options)
         if e == 'Windows':
             # pip install webdriver-manager
             c = webdriver.Chrome(ChromeDriverManager(path="./").install(),
