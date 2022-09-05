@@ -23,9 +23,9 @@ def get_user_id(emp_no: str) -> str:
         'x-tenant-id': '10000'
     }
 
-    response = requests.request("POST", url, headers=headers, data=json.dumps(payload))
-    return json.loads(response.text).get('bo').get('empId')
-
+    #response = requests.request("POST", url, headers=headers, data=json.dumps(payload))
+    #uid = json.loads(response.text).get('bo').get('empId')
+    return data.get('EMP_ID')
 def main():
     return get_user_id('XXX')
 
