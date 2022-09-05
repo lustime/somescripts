@@ -40,12 +40,14 @@ class SpiderAirport:
         options.add_argument('--window-size=1920x1080')
         # options.binary_location = binary_location
         e = platform.system()
-        if e == 'Windows':
-            # pip install webdriver-manager
-            c = webdriver.Chrome(ChromeDriverManager(path="./").install(),
+        c = webdriver.Chrome(ChromeDriverManager(path="./").install(),
                                  chrome_options=options)
-        else:
-            c = webdriver.Chrome(chrome_options=options)
+        #if e == 'Windows':
+            # pip install webdriver-manager
+            #c = webdriver.Chrome(ChromeDriverManager(path="./").install(),
+          #                       chrome_options=options)
+        #else:
+            #c = webdriver.Chrome(chrome_options=options)
         c.implicitly_wait(10)
         url = self.check_items.get('url') + 'portal/main.jsp'
         c.get(url)
