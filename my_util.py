@@ -20,12 +20,13 @@ def get_user_id(emp_no: str) -> str:
         'x-emp-no': emp_no,
         'x-emp-id': '0',
         'x-lang-id': 'zh_CN',
-        'x-tenant-id': '10000'
+        'x-tenant-id': '10000',
+        'User-Agent': data.get('EMP_USER_AGENT')
     }
 
-    #response = requests.request("POST", url, headers=headers, data=json.dumps(payload))
-    #uid = json.loads(response.text).get('bo').get('empId')
-    return data.get('EMP_ID')
+    response = requests.request("POST", url, headers=headers, data=json.dumps(payload))
+    return json.loads(response.text).get('bo').get('empId')
+    #return data.get('EMP_ID')
 def main():
     return get_user_id('XXX')
 
