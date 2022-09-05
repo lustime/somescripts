@@ -31,6 +31,7 @@ class KQYC:
             'x-emp-no': emp_no,
             'x-lang-id': 'zh_CN',
             'x-tenant-id': '10000',
+            'User-Agent': data.get('EMP_USER_AGENT'),
             'Content-Type': 'application/json'
         }
 
