@@ -20,6 +20,7 @@ class KQYC:
         self.check_items = check_items
 
     def get_kq(self, url, emp_no):
+        data = get_data()
         user_id = get_user_id(emp_no)
         month = datetime.datetime.now().month
         year = datetime.datetime.now().year
